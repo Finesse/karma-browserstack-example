@@ -79,6 +79,22 @@ module.exports = function(config) {
         os: 'ios',
         real_mobile: true,
         os_version: '11.0'
+      },
+      bs_android_chrome: {
+        base: 'BrowserStack',
+        device: 'Google Pixel 3',
+        os: 'Android',
+        os_version: '10',
+        browser: 'Chrome',
+        browser_version: '85.0'
+      },
+      bs_android_samsung: {
+        base: 'BrowserStack',
+        device: 'Samsung Galaxy S20',
+        os: 'Android',
+        os_version: '10',
+        browser: 'Samsung',
+        browser_version: '12.0'
       }
     },
 
@@ -88,7 +104,7 @@ module.exports = function(config) {
     browserSocketTimeout: 1.2e5,
     browserNoActivityTimeout: 3e5,
 
-    browsers: ['bs_firefox_mac', 'bs_iphoneX'],
+    browsers: ['bs_firefox_mac', 'bs_iphoneX', 'bs_android_chrome', 'bs_android_samsung'],
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
 
