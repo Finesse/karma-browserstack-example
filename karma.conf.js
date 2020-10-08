@@ -61,41 +61,47 @@ module.exports = function(config) {
     browserStack: {
       username: process.env.BROWSERSTACK_USERNAME,
       accessKey: process.env.BROWSERSTACK_ACCESS_KEY,
-      apiClientEndpoint: 'https://api.browserstack.com'
+      apiClientEndpoint: 'https://api.browserstack.com',
+      build: String(Math.random()),
     },
 
     // define browsers
     customLaunchers: {
-      bs_firefox_mac: {
-        base: 'BrowserStack',
-        browser: 'firefox',
-        browser_version: '70.0',
-        os: 'OS X',
-        os_version: 'High Sierra'
-      },
-      bs_iphoneX: {
-        base: 'BrowserStack',
-        device: 'iPhone X',
-        os: 'ios',
-        real_mobile: true,
-        os_version: '11.0'
-      },
-      bs_android_chrome: {
+      bs_pixel_3_10: {
         base: 'BrowserStack',
         device: 'Google Pixel 3',
         os: 'Android',
-        os_version: '10',
+        os_version: '10.0',
         browser: 'Chrome',
-        browser_version: '85.0'
       },
-      bs_android_samsung: {
+      bs_pixel_4_10: {
+        base: 'BrowserStack',
+        device: 'Google Pixel 4',
+        os: 'Android',
+        os_version: '10.0',
+        browser: 'Chrome'
+      },
+      bs_pixel_4_11: {
+        base: 'BrowserStack',
+        device: 'Google Pixel 4',
+        os: 'Android',
+        os_version: '11.0',
+        browser: 'Chrome'
+      },
+      bs_galaxy_a11: {
+        base: 'BrowserStack',
+        device: 'Samsung Galaxy A11',
+        os: 'Android',
+        os_version: '10.0',
+        browser: 'Samsung Internet', // Samsung Internet isn't supported according to https://www.browserstack.com/question/659
+      },
+      bs_galaxy_s20: {
         base: 'BrowserStack',
         device: 'Samsung Galaxy S20',
         os: 'Android',
-        os_version: '10',
-        browser: 'Samsung',
-        browser_version: '12.0'
-      }
+        os_version: '10.0',
+        browser: 'Samsung Internet', // Samsung Internet isn't supported according to https://www.browserstack.com/question/659
+      },
     },
 
     captureTimeout: 3e5,
@@ -104,7 +110,7 @@ module.exports = function(config) {
     browserSocketTimeout: 1.2e5,
     browserNoActivityTimeout: 3e5,
 
-    browsers: ['bs_firefox_mac', 'bs_iphoneX', 'bs_android_chrome', 'bs_android_samsung'],
+    browsers: ['bs_pixel_3_10', 'bs_pixel_4_10', 'bs_pixel_4_11', 'bs_galaxy_a11', 'bs_galaxy_s20'],
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
 
