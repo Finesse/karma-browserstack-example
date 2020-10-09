@@ -1,0 +1,4 @@
+/local.log
+/node_modules/
+/browserstack.err
+/package-lock.json

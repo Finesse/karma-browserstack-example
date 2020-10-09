@@ -61,25 +61,54 @@ module.exports = function(config) {
     browserStack: {
       username: process.env.BROWSERSTACK_USERNAME,
       accessKey: process.env.BROWSERSTACK_ACCESS_KEY,
-      apiClientEndpoint: 'https://api.browserstack.com'
+      apiClientEndpoint: 'https://api.browserstack.com',
+      build: String(Math.random()),
     },
 
     // define browsers
     customLaunchers: {
+      bs_chrome_win: {
+        base: 'BrowserStack',
+        browser: 'Chrome',
+        os: 'Windows',
+        os_version: '10',
+        'goog:chromeOptions': {
+          args: ['incognito'],
+          w3c: true,
+        },
+      },
+      bs_chrome_mac: {
+        base: 'BrowserStack',
+        browser: 'Chrome',
+        os: 'OS X',
+        os_version: 'Catalina',
+        'goog:chromeOptions': {
+          args: ['incognito'],
+          w3c: true,
+        },
+      },
+      bs_firefox_win: {
+        base: 'BrowserStack',
+        browser: 'firefox',
+        os: 'Windows',
+        os_version: '10',
+        'moz:firefoxOptions': {
+          prefs: {
+            'browser.privatebrowsing.autostart': true,
+          },
+        },
+      },
       bs_firefox_mac: {
         base: 'BrowserStack',
         browser: 'firefox',
-        browser_version: '70.0',
         os: 'OS X',
-        os_version: 'High Sierra'
+        os_version: 'Catalina',
+        'moz:firefoxOptions': {
+          prefs: {
+            'browser.privatebrowsing.autostart': true,
+          },
+        },
       },
-      bs_iphoneX: {
-        base: 'BrowserStack',
-        device: 'iPhone X',
-        os: 'ios',
-        real_mobile: true,
-        os_version: '11.0'
-      }
     },
 
     captureTimeout: 3e5,
@@ -88,7 +117,7 @@ module.exports = function(config) {
     browserSocketTimeout: 1.2e5,
     browserNoActivityTimeout: 3e5,
 
-    browsers: ['bs_firefox_mac', 'bs_iphoneX'],
+    browsers: ['bs_chrome_win', 'bs_chrome_mac', 'bs_firefox_win', 'bs_firefox_mac'],
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
 
